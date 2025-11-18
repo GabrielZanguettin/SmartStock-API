@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartStock</name>
+    </assembly>
+    <members>
+        <member name="T:SmartStock.Dtos.CreateProductDto">
+            <summary>Data transfer object used to create a new product.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateProductDto.Name">
+            <summary>Name of the product.</summary>
+            <example>Tênis esportivo básico</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateProductDto.UnitPrice">
+            <summary>Unit price of the product.</summary>
+            <example>199.90</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateProductDto.StockQuantity">
+            <summary>Initial stock quantity of the product.</summary>
+            <example>50</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateProductDto.SupplierId">
+            <summary>Identifier of the supplier associated with the product.</summary>
+            <example>1</example>
+        </member>
+        <member name="T:SmartStock.Dtos.OrderFiltersDto">
+            <summary>
+            Filtering options for listing orders.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.OrderItemFiltersDto">
+            <summary>
+            Filtering options for listing order items.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.PaginationDto">
+            <summary>
+            Base pagination parameters used for listing resources.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.PaginationDto.Page">
+            <summary>
+            Page number (1-based). Defaults to 1.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.PaginationDto.PageSize">
+            <summary>
+            Page size (items per page). Defaults to 20.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.ProductFiltersDto">
+            <summary>
+            Filtering options for listing products.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.StockMovementFiltersDto">
+            <summary>
+            Filtering options for listing stock movements.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.SupplierFiltersDto">
+            <summary>
+            Filtering options for listing suppliers.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateProductDto">
+            <summary>
+            Data transfer object used to partially update an existing product.
+            All properties are optional; only provided values will be updated.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateProductDto.Name">
+            <summary>New name for the product (optional).</summary>
+            <example>Tênis esportivo premium</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateProductDto.UnitPrice">
+            <summary>New unit price for the product (optional).</summary>
+            <example>219.90</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateProductDto.SupplierId">
+            <summary>New supplier identifier for the product (optional).</summary>
+            <example>2</example>
+        </member>
+        <member name="T:SmartStock.Migrations.init">
+            <inheritdoc />
+        </member>
+        <member name="M:SmartStock.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SmartStock.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SmartStock.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SmartStock.Responses.ApiResponse`1">
+            <summary>
+            Generic API response envelope that wraps a message and a typed payload.
+            </summary>
+            <typeparam name="T">Type of the response payload.</typeparam>
+        </member>
+        <member name="P:SmartStock.Responses.ApiResponse`1.Message">
+            <summary>
+            Message describing the result of the operation.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Responses.ApiResponse`1.Data">
+            <summary>
+            The data payload returned by the operation.
+            </summary>
+        </member>
+    </members>
+</doc>

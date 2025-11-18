@@ -24,6 +24,22 @@ namespace SmartStock.Data
             modelBuilder.Entity<StockMovement>()
                 .Property(sm => sm.Type)
                 .HasConversion<string>();
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.UnitPrice)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.UnitPrice)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Taxes)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Discount)
+                .HasPrecision(10, 2);
         }
     }
 }

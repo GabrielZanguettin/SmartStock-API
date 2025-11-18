@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartStock.Dtos;
-using SmartStock.Entities;
 using SmartStock.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -22,9 +21,10 @@ namespace SmartStock.Controllers
             Summary = "List products",
             Description = "Returns a filtered (and optionally paginated) list of products based on the provided query parameters."
         )]
-        public Task<IActionResult> FindAll([FromQuery] ProductFiltersDto? filters)
+        public async Task<IActionResult> FindAll([FromQuery] ProductFiltersDto? filters)
         {
-            throw new NotImplementedException();
+            var response = await _productService.FindAll(filters);
+            return Ok(response);
         }
 
         [HttpGet("products/{id:int}")]
@@ -32,9 +32,17 @@ namespace SmartStock.Controllers
             Summary = "Get product by ID",
             Description = "Fetches a single product that matches the specified identifier."
         )]
-        public Task<IActionResult> FindOne([FromRoute] int id)
+        public async Task<IActionResult> FindOne([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _productService.FindOne(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPost("products")]
@@ -42,9 +50,21 @@ namespace SmartStock.Controllers
             Summary = "Create a new product",
             Description = "Creates a new product with the provided data and returns the created resource."
         )]
-        public Task<IActionResult> Create([FromBody] Product product)
+        public async Task<IActionResult> Create([FromBody] CreateProductDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _productService.CreateProduct(dto);
+                return CreatedAtAction(nameof(FindOne), new { id = response.Data.Id }, response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("products/{id:int}")]
@@ -52,9 +72,21 @@ namespace SmartStock.Controllers
             Summary = "Update an existing product",
             Description = "Updates an existing product with the provided data based on the specified identifier."
         )]
-        public Task<IActionResult> Update([FromRoute] int id, [FromBody] Product product)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProductDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _productService.UpdateProduct(id, dto);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("products/{id:int}")]
@@ -62,9 +94,17 @@ namespace SmartStock.Controllers
             Summary = "Delete a product",
             Description = "Deletes the product that matches the specified identifier."
         )]
-        public Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _productService.DeleteProduct(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
     }
 }
