@@ -9,6 +9,7 @@ namespace SmartStock.Entities
         public string? CustomerName { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.DRAFT;
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
+        public Payment? Payment { get; set; }
         public decimal Subtotal => Items.Sum(item => item.Quantity * item.UnitPrice);
         public decimal Taxes { get; set; }
         public decimal Discount { get; set; }

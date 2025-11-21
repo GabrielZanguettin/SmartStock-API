@@ -1,0 +1,1469 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "SmartStockAPI",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "List orders",
+        "description": "Returns a filtered (and optionally paginated) list of orders based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create a new order",
+        "description": "Creates a new order with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/orders/{id}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Get order by ID",
+        "description": "Fetches a single order that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Update an existing order",
+        "description": "Updates an existing order with the provided data based on the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Delete an order",
+        "description": "Deletes the order that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/order-items": {
+      "get": {
+        "tags": [
+          "OrderItem"
+        ],
+        "summary": "List order items",
+        "description": "Returns a filtered (and optionally paginated) list of order items based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "OrderItem"
+        ],
+        "summary": "Create a new order item",
+        "description": "Creates a new order item with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderItemDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderItemDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderItemDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/order-items/{id}": {
+      "get": {
+        "tags": [
+          "OrderItem"
+        ],
+        "summary": "Get order item by ID",
+        "description": "Fetches a single order item that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "OrderItem"
+        ],
+        "summary": "Update an existing order item",
+        "description": "Updates an existing order item with the provided data based on the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "OrderItem"
+        ],
+        "summary": "Delete an order item",
+        "description": "Deletes the order item that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payments": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "List payments",
+        "description": "Returns a filtered (and optionally paginated) list of payments based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Create a new payment",
+        "description": "Creates a new payment with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payments/{id}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Get payment by ID",
+        "description": "Fetches a single payment that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List products",
+        "description": "Returns a filtered (and optionally paginated) list of products based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create a new product",
+        "description": "Creates a new product with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/products/{id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Get product by ID",
+        "description": "Fetches a single product that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update an existing product",
+        "description": "Updates an existing product with the provided data based on the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete a product",
+        "description": "Deletes the product that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/stock-movements": {
+      "get": {
+        "tags": [
+          "StockMovement"
+        ],
+        "summary": "List stock movements",
+        "description": "Returns a filtered (and optionally paginated) list of stock movements based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StockMovement"
+        ],
+        "summary": "Create a new stock movement",
+        "description": "Creates a new stock movement with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStockMovementDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStockMovementDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStockMovementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/stock-movements/{id}": {
+      "get": {
+        "tags": [
+          "StockMovement"
+        ],
+        "summary": "Get stock movement by ID",
+        "description": "Fetches a single stock movement that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "StockMovement"
+        ],
+        "summary": "Update an existing stock movement",
+        "description": "Updates an existing stock movement with the provided data based on the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StockMovement"
+        ],
+        "summary": "Delete a stock movement",
+        "description": "Deletes the stock movement that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/suppliers": {
+      "get": {
+        "tags": [
+          "Supplier"
+        ],
+        "summary": "List suppliers",
+        "description": "Returns a filtered (and optionally paginated) list of suppliers based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Supplier"
+        ],
+        "summary": "Create a new supplier",
+        "description": "Creates a new supplier with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSupplierDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSupplierDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSupplierDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/suppliers/{id}": {
+      "get": {
+        "tags": [
+          "Supplier"
+        ],
+        "summary": "Get supplier by ID",
+        "description": "Fetches a single supplier that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Supplier"
+        ],
+        "summary": "Update an existing supplier",
+        "description": "Updates an existing supplier with the provided data based on the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSupplierDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSupplierDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSupplierDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Supplier"
+        ],
+        "summary": "Delete a supplier",
+        "description": "Deletes the supplier that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateOrderDto": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the customer related to the order.",
+            "nullable": true,
+            "example": "Maria da Silva"
+          },
+          "discount": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Discount applied to the order.",
+            "format": "double",
+            "example": 10,00
+          },
+          "taxes": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Taxes applied to the order.",
+            "format": "double",
+            "example": 5,50
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateOrderItemForOrderDto"
+            },
+            "description": "List of items that compose the order.",
+            "example": [
+              {
+                "productId": 1,
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new order."
+      },
+      "CreateOrderItemDto": {
+        "required": [
+          "orderId",
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order associated with this item.",
+            "format": "int32",
+            "example": 1
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with this item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Quantity of the product included in this order item.",
+            "format": "int32",
+            "example": 50
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new order item."
+      },
+      "CreateOrderItemForOrderDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with the order item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of the product in the order.",
+            "format": "int32",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create an item as part of a new order."
+      },
+      "CreatePaymentDto": {
+        "required": [
+          "method",
+          "orderId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order that will be paid.",
+            "format": "int32",
+            "example": 1
+          },
+          "method": {
+            "$ref": "#/components/schemas/PaymentMethod"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a payment for an existing order."
+      },
+      "CreateProductDto": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the product.",
+            "example": "Tênis esportivo básico"
+          },
+          "unitPrice": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0.01,
+            "type": "number",
+            "description": "Unit price of the product.",
+            "format": "double",
+            "example": 199,90
+          },
+          "stockQuantity": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Initial stock quantity of the product.",
+            "format": "int32",
+            "example": 50
+          },
+          "supplierId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the supplier associated with the product.",
+            "format": "int32",
+            "example": 1
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new product."
+      },
+      "CreateStockMovementDto": {
+        "required": [
+          "productId",
+          "quantityChange",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product affected by this stock movement.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantityChange": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of items that will change in stock",
+            "format": "int32",
+            "example": 10
+          },
+          "type": {
+            "$ref": "#/components/schemas/StockMovementType"
+          },
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Optional identifier of the order related to this stock movement.",
+            "format": "int32",
+            "nullable": true,
+            "example": 3
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new stock movement."
+      },
+      "CreateSupplierDto": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the supplier.",
+            "example": "Fornecedor Esportivo LTDA"
+          },
+          "document": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Tax identification document of the supplier (CPF/CNPJ or equivalent).",
+            "nullable": true,
+            "example": "12.345.678/0001-99"
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact phone number of the supplier.",
+            "format": "tel",
+            "nullable": true,
+            "example": "(11) 98765-4321"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact email address of the supplier.",
+            "format": "email",
+            "nullable": true,
+            "example": "contato@fornecedor.com"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new supplier."
+      },
+      "PaymentMethod": {
+        "enum": [
+          "CASH",
+          "CREDIT_CARD",
+          "DEBIT_CARD",
+          "PIX",
+          "OTHER"
+        ],
+        "type": "string"
+      },
+      "StockMovementType": {
+        "enum": [
+          "ENTRY",
+          "EXIT"
+        ],
+        "type": "string"
+      },
+      "UpdateOrderDto": {
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the customer related to the order.",
+            "nullable": true,
+            "example": "Maria da Silva"
+          },
+          "discount": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Discount applied to the order.",
+            "format": "double",
+            "nullable": true,
+            "example": 10,00
+          },
+          "taxes": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Taxes applied to the order.",
+            "format": "double",
+            "nullable": true,
+            "example": 5,50
+          },
+          "toAdd": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateOrderItemToAddDto"
+            },
+            "description": "Items to be added to the order.",
+            "nullable": true,
+            "example": [
+              {
+                "productId": 1,
+                "quantity": 2
+              }
+            ]
+          },
+          "toRemove": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateOrderItemToRemoveDto"
+            },
+            "description": "Items to be removed from the order.",
+            "nullable": true,
+            "example": [
+              {
+                "orderItemId": 10
+              }
+            ]
+          },
+          "toEdit": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateOrderItemToEditDto"
+            },
+            "description": "Items to be edited in the order.",
+            "nullable": true,
+            "example": [
+              {
+                "orderItemId": 10,
+                "productId": 2,
+                "quantity": 3
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to update an existing order."
+      },
+      "UpdateOrderItemDto": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order associated with this item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with this item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Quantity of the product included in this order item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 60
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to update an existing order item."
+      },
+      "UpdateOrderItemToAddDto": {
+        "required": [
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with the order item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of the product in the order.",
+            "format": "int32",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be added to the order."
+      },
+      "UpdateOrderItemToEditDto": {
+        "required": [
+          "orderItemId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderItemId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order item to be edited.",
+            "format": "int32",
+            "example": 10
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "New product identifier for the order item (optional).",
+            "format": "int32",
+            "nullable": true,
+            "example": 2
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "New quantity for the order item (optional).",
+            "format": "int32",
+            "nullable": true,
+            "example": 3
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be edited in the order."
+      },
+      "UpdateOrderItemToRemoveDto": {
+        "required": [
+          "orderItemId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderItemId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order item to be removed.",
+            "format": "int32",
+            "example": 10
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be removed from the order."
+      },
+      "UpdateProductDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "New name for the product (optional).",
+            "nullable": true,
+            "example": "Tênis esportivo premium"
+          },
+          "unitPrice": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0.01,
+            "type": "number",
+            "description": "New unit price for the product (optional).",
+            "format": "double",
+            "nullable": true,
+            "example": 219,90
+          },
+          "supplierId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "New supplier identifier for the product (optional).",
+            "format": "int32",
+            "nullable": true,
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to partially update an existing product.\r\nAll properties are optional; only provided values will be updated."
+      },
+      "UpdateStockMovementDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product affected by this stock movement.",
+            "format": "int32",
+            "nullable": true,
+            "example": 2
+          },
+          "quantityChange": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of items that will change in stock",
+            "format": "int32",
+            "nullable": true,
+            "example": 15
+          },
+          "type": {
+            "$ref": "#/components/schemas/StockMovementType"
+          },
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Optional identifier of the order related to this stock movement.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to partially update an existing stock movement.\r\nAll properties are optional; only provided values will be updated."
+      },
+      "UpdateSupplierDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the supplier.",
+            "nullable": true,
+            "example": "Fornecedor Atualizado ME"
+          },
+          "document": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Tax identification document of the supplier (CPF/CNPJ or equivalent).",
+            "nullable": true,
+            "example": "98.765.432/0001-55"
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact phone number of the supplier.",
+            "format": "tel",
+            "nullable": true,
+            "example": "(21) 91234-5678"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact email address of the supplier.",
+            "format": "email",
+            "nullable": true,
+            "example": "financeiro@fornecedoratualizado.com"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to partially update an existing supplier.\r\nAll properties are optional; only provided values will be updated."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Order"
+    },
+    {
+      "name": "OrderItem"
+    },
+    {
+      "name": "Payment"
+    },
+    {
+      "name": "Product"
+    },
+    {
+      "name": "StockMovement"
+    },
+    {
+      "name": "Supplier"
+    }
+  ]
+}

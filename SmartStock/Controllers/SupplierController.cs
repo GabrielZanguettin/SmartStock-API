@@ -22,9 +22,10 @@ namespace SmartStock.Controllers
             Summary = "List suppliers",
             Description = "Returns a filtered (and optionally paginated) list of suppliers based on the provided query parameters."
         )]
-        public Task<IActionResult> FindAll([FromQuery] SupplierFiltersDto? filters)
+        public async Task<IActionResult> FindAll([FromQuery] SupplierFiltersDto? filters)
         {
-            throw new NotImplementedException();
+            var response = await _supplierService.FindAll(filters);
+            return Ok(response);
         }
 
         [HttpGet("suppliers/{id:int}")]
@@ -32,9 +33,17 @@ namespace SmartStock.Controllers
             Summary = "Get supplier by ID",
             Description = "Fetches a single supplier that matches the specified identifier."
         )]
-        public Task<IActionResult> FindOne([FromRoute] int id)
+        public async Task<IActionResult> FindOne([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _supplierService.FindOne(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPost("suppliers")]
@@ -42,19 +51,43 @@ namespace SmartStock.Controllers
             Summary = "Create a new supplier",
             Description = "Creates a new supplier with the provided data and returns the created resource."
         )]
-        public Task<IActionResult> Create([FromBody] Supplier supplier)
+        public async Task<IActionResult> Create([FromBody] CreateSupplierDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _supplierService.CreateSupplier(dto);
+                return CreatedAtAction(nameof(FindOne), new { id = response.Data.Id }, response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
-        [HttpPut("suppliers/{id:int}")]
+        [HttpPatch("suppliers/{id:int}")]
         [SwaggerOperation(
             Summary = "Update an existing supplier",
             Description = "Updates an existing supplier with the provided data based on the specified identifier."
         )]
-        public Task<IActionResult> Update([FromRoute] int id, [FromBody] Supplier supplier)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateSupplierDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _supplierService.UpdateSupplier(id, dto);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("suppliers/{id:int}")]
@@ -62,9 +95,17 @@ namespace SmartStock.Controllers
             Summary = "Delete a supplier",
             Description = "Deletes the supplier that matches the specified identifier."
         )]
-        public Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _supplierService.DeleteSupplier(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
     }
 }

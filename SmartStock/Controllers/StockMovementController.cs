@@ -22,9 +22,10 @@ namespace SmartStock.Controllers
             Summary = "List stock movements",
             Description = "Returns a filtered (and optionally paginated) list of stock movements based on the provided query parameters."
         )]
-        public Task<IActionResult> FindAll([FromQuery] StockMovementFiltersDto? filters)
+        public async Task<IActionResult> FindAll([FromQuery] StockMovementFiltersDto? filters)
         {
-            throw new NotImplementedException();
+            var response = await _stockMovementService.FindAll(filters);
+            return Ok(response);
         }
 
         [HttpGet("stock-movements/{id:int}")]
@@ -32,9 +33,17 @@ namespace SmartStock.Controllers
             Summary = "Get stock movement by ID",
             Description = "Fetches a single stock movement that matches the specified identifier."
         )]
-        public Task<IActionResult> FindOne([FromRoute] int id)
+        public async Task<IActionResult> FindOne([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _stockMovementService.FindOne(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPost("stock-movements")]
@@ -42,19 +51,43 @@ namespace SmartStock.Controllers
             Summary = "Create a new stock movement",
             Description = "Creates a new stock movement with the provided data and returns the created resource."
         )]
-        public Task<IActionResult> Create([FromBody] StockMovement movement)
+        public async Task<IActionResult> Create([FromBody] CreateStockMovementDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _stockMovementService.CreateStockMovement(dto);
+                return CreatedAtAction(nameof(FindOne), new { id = response.Data.Id }, response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
-        [HttpPut("stock-movements/{id:int}")]
+        [HttpPatch("stock-movements/{id:int}")]
         [SwaggerOperation(
             Summary = "Update an existing stock movement",
             Description = "Updates an existing stock movement with the provided data based on the specified identifier."
         )]
-        public Task<IActionResult> Update([FromRoute] int id, [FromBody] StockMovement movement)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockMovementDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _stockMovementService.UpdateStockMovement(id, dto);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("stock-movements/{id:int}")]
@@ -62,9 +95,17 @@ namespace SmartStock.Controllers
             Summary = "Delete a stock movement",
             Description = "Deletes the stock movement that matches the specified identifier."
         )]
-        public Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _stockMovementService.DeleteStockMovement(id);
+                return Ok(response);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
     }
 }
