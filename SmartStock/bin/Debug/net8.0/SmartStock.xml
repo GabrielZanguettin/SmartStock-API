@@ -4,6 +4,68 @@
         <name>SmartStock</name>
     </assembly>
     <members>
+        <member name="T:SmartStock.Dtos.CreateOrderDto">
+            <summary>Data transfer object used to create a new order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderDto.CustomerName">
+            <summary>Name of the customer related to the order.</summary>
+            <example>Maria da Silva</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderDto.Discount">
+            <summary>Discount applied to the order.</summary>
+            <example>10.00</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderDto.Taxes">
+            <summary>Taxes applied to the order.</summary>
+            <example>5.50</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderDto.Items">
+            <summary>List of items that compose the order.</summary>
+            <example>[{ "productId": 1, "quantity": 2 }]</example>
+        </member>
+        <member name="T:SmartStock.Dtos.CreateOrderItemDto">
+            <summary>Data transfer object used to create a new order item.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderItemDto.OrderId">
+            <summary>Identifier of the order associated with this item.</summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderItemDto.ProductId">
+            <summary>Identifier of the product associated with this item.</summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderItemDto.Quantity">
+            <summary>Quantity of the product included in this order item.</summary>
+            <example>50</example>
+        </member>
+        <member name="T:SmartStock.Dtos.CreateOrderItemForOrderDto">
+            <summary>Data transfer object used to create an item as part of a new order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderItemForOrderDto.ProductId">
+            <summary>Identifier of the product associated with the order item.</summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateOrderItemForOrderDto.Quantity">
+            <summary>Quantity of the product in the order.</summary>
+            <example>2</example>
+        </member>
+        <member name="T:SmartStock.Dtos.CreatePaymentDto">
+            <summary>
+            Data transfer object used to create a payment for an existing order.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreatePaymentDto.OrderId">
+            <summary>
+            Identifier of the order that will be paid.
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreatePaymentDto.Method">
+            <summary>
+            Payment method used to pay the order.
+            </summary>
+            <example>PIX</example>
+        </member>
         <member name="T:SmartStock.Dtos.CreateProductDto">
             <summary>Data transfer object used to create a new product.</summary>
         </member>
@@ -22,6 +84,46 @@
         <member name="P:SmartStock.Dtos.CreateProductDto.SupplierId">
             <summary>Identifier of the supplier associated with the product.</summary>
             <example>1</example>
+        </member>
+        <member name="T:SmartStock.Dtos.CreateStockMovementDto">
+            <summary>Data transfer object used to create a new stock movement.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateStockMovementDto.ProductId">
+            <summary>Identifier of the product affected by this stock movement.</summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateStockMovementDto.QuantityChange">
+            <summary>
+            Quantity of items that will change in stock 
+            </summary>
+            <example>10</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateStockMovementDto.Type">
+            <summary>Type of stock movement (ENTRY or EXIT).</summary>
+            <example>ENTRY</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateStockMovementDto.OrderId">
+            <summary>Optional identifier of the order related to this stock movement.</summary>
+            <example>3</example>
+        </member>
+        <member name="T:SmartStock.Dtos.CreateSupplierDto">
+            <summary>Data transfer object used to create a new supplier.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateSupplierDto.Name">
+            <summary>Name of the supplier.</summary>
+            <example>Fornecedor Esportivo LTDA</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateSupplierDto.Document">
+            <summary>Tax identification document of the supplier (CPF/CNPJ or equivalent).</summary>
+            <example>12.345.678/0001-99</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateSupplierDto.Phone">
+            <summary>Contact phone number of the supplier.</summary>
+            <example>(11) 98765-4321</example>
+        </member>
+        <member name="P:SmartStock.Dtos.CreateSupplierDto.Email">
+            <summary>Contact email address of the supplier.</summary>
+            <example>contato@fornecedor.com</example>
         </member>
         <member name="T:SmartStock.Dtos.OrderFiltersDto">
             <summary>
@@ -48,6 +150,11 @@
             Page size (items per page). Defaults to 20.
             </summary>
         </member>
+        <member name="T:SmartStock.Dtos.PaymentFiltersDto">
+            <summary>
+            Filtering options for listing payments.
+            </summary>
+        </member>
         <member name="T:SmartStock.Dtos.ProductFiltersDto">
             <summary>
             Filtering options for listing products.
@@ -62,6 +169,86 @@
             <summary>
             Filtering options for listing suppliers.
             </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateOrderDto">
+            <summary>Data transfer object used to update an existing order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.CustomerName">
+            <summary>Name of the customer related to the order.</summary>
+            <example>Maria da Silva</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.Discount">
+            <summary>Discount applied to the order.</summary>
+            <example>10.00</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.Taxes">
+            <summary>Taxes applied to the order.</summary>
+            <example>5.50</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.ToAdd">
+            <summary>Items to be added to the order.</summary>
+            <example>[{ "productId": 1, "quantity": 2 }]</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.ToRemove">
+            <summary>Items to be removed from the order.</summary>
+            <example>[{ "orderItemId": 10 }]</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderDto.ToEdit">
+            <summary>Items to be edited in the order.</summary>
+            <example>[{ "orderItemId": 10, "productId": 2, "quantity": 3 }]</example>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateOrderItemDto">
+            <summary>Data transfer object used to update an existing order item.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemDto.OrderId">
+            <summary>Identifier of the order associated with this item.</summary>
+            <example>5</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemDto.ProductId">
+            <summary>Identifier of the product associated with this item.</summary>
+            <example>5</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemDto.Quantity">
+            <summary>Quantity of the product included in this order item.</summary>
+            <example>60</example>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateOrderItemToAddDto">
+            <summary>Represents an item to be added to the order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToAddDto.ProductId">
+            <summary>Identifier of the product associated with the order item.</summary>
+            <example>1</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToAddDto.Quantity">
+            <summary>Quantity of the product in the order.</summary>
+            <example>2</example>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateOrderItemToEditDto">
+            <summary>Represents an item to be edited in the order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToEditDto.OrderItemId">
+            <summary>Identifier of the order item to be edited.</summary>
+            <example>10</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToEditDto.ProductId">
+            <summary>New product identifier for the order item (optional).</summary>
+            <example>2</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToEditDto.Quantity">
+            <summary>New quantity for the order item (optional).</summary>
+            <example>3</example>
+        </member>
+        <member name="M:SmartStock.Dtos.UpdateOrderItemToEditDto.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Ensure that at least ProductId or Quantity is provided.
+            </summary>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateOrderItemToRemoveDto">
+            <summary>Represents an item to be removed from the order.</summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateOrderItemToRemoveDto.OrderItemId">
+            <summary>Identifier of the order item to be removed.</summary>
+            <example>10</example>
         </member>
         <member name="T:SmartStock.Dtos.UpdateProductDto">
             <summary>
@@ -81,16 +268,62 @@
             <summary>New supplier identifier for the product (optional).</summary>
             <example>2</example>
         </member>
-        <member name="T:SmartStock.Migrations.init">
+        <member name="T:SmartStock.Dtos.UpdateStockMovementDto">
+            <summary>
+            Data transfer object used to partially update an existing stock movement.
+            All properties are optional; only provided values will be updated.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateStockMovementDto.ProductId">
+            <summary>Identifier of the product affected by this stock movement.</summary>
+            <example>2</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateStockMovementDto.QuantityChange">
+            <summary>
+            Quantity of items that will change in stock 
+            </summary>
+            <example>15</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateStockMovementDto.Type">
+            <summary>Type of stock movement (ENTRY or EXIT).</summary>
+            <example>EXIT</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateStockMovementDto.OrderId">
+            <summary>Optional identifier of the order related to this stock movement.</summary>
+            <example>5</example>
+        </member>
+        <member name="T:SmartStock.Dtos.UpdateSupplierDto">
+            <summary>
+            Data transfer object used to partially update an existing supplier.
+            All properties are optional; only provided values will be updated.
+            </summary>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateSupplierDto.Name">
+            <summary>Name of the supplier.</summary>
+            <example>Fornecedor Atualizado ME</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateSupplierDto.Document">
+            <summary>Tax identification document of the supplier (CPF/CNPJ or equivalent).</summary>
+            <example>98.765.432/0001-55</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateSupplierDto.Phone">
+            <summary>Contact phone number of the supplier.</summary>
+            <example>(21) 91234-5678</example>
+        </member>
+        <member name="P:SmartStock.Dtos.UpdateSupplierDto.Email">
+            <summary>Contact email address of the supplier.</summary>
+            <example>financeiro@fornecedoratualizado.com</example>
+        </member>
+        <member name="T:SmartStock.Migrations.InitialSchema">
             <inheritdoc />
         </member>
-        <member name="M:SmartStock.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SmartStock.Migrations.InitialSchema.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SmartStock.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SmartStock.Migrations.InitialSchema.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SmartStock.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:SmartStock.Migrations.InitialSchema.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:SmartStock.Responses.ApiResponse`1">

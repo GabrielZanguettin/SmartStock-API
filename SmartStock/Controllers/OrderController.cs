@@ -68,7 +68,7 @@ namespace SmartStock.Controllers
             }
         }
 
-        [HttpPut("orders/{id:int}")]
+        [HttpPatch("orders/{id:int}")]
         [SwaggerOperation(
             Summary = "Update an existing order",
             Description = "Updates an existing order with the provided data based on the specified identifier."

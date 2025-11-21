@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hugom\\OneDrive\\Área de Trabalho\\SmartStock-API-dev\\SmartStock\\SmartStock.csproj": {}
+    "C:\\Users\\gabri\\Desktop\\Programação\\SmartStock-API\\SmartStock\\SmartStock.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hugom\\OneDrive\\Área de Trabalho\\SmartStock-API-dev\\SmartStock\\SmartStock.csproj": {
+    "C:\\Users\\gabri\\Desktop\\Programação\\SmartStock-API\\SmartStock\\SmartStock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hugom\\OneDrive\\Área de Trabalho\\SmartStock-API-dev\\SmartStock\\SmartStock.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Programação\\SmartStock-API\\SmartStock\\SmartStock.csproj",
         "projectName": "SmartStock",
-        "projectPath": "C:\\Users\\hugom\\OneDrive\\Área de Trabalho\\SmartStock-API-dev\\SmartStock\\SmartStock.csproj",
-        "packagesPath": "C:\\Users\\hugom\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hugom\\OneDrive\\Área de Trabalho\\SmartStock-API-dev\\SmartStock\\obj\\",
+        "projectPath": "C:\\Users\\gabri\\Desktop\\Programação\\SmartStock-API\\SmartStock\\SmartStock.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\Desktop\\Programação\\SmartStock-API\\SmartStock\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hugom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

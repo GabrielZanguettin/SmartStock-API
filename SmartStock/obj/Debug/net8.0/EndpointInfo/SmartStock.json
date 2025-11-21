@@ -48,17 +48,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/CreateOrderDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/CreateOrderDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/CreateOrderDto"
               }
             }
           }
@@ -94,7 +94,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "Order"
         ],
@@ -115,17 +115,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/UpdateOrderDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/UpdateOrderDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/UpdateOrderDto"
               }
             }
           }
@@ -203,17 +203,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/CreateOrderItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/CreateOrderItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/CreateOrderItemDto"
               }
             }
           }
@@ -249,7 +249,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "OrderItem"
         ],
@@ -270,17 +270,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderItem"
+                "$ref": "#/components/schemas/UpdateOrderItemDto"
               }
             }
           }
@@ -297,6 +297,96 @@
         ],
         "summary": "Delete an order item",
         "description": "Deletes the order item that matches the specified identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payments": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "List payments",
+        "description": "Returns a filtered (and optionally paginated) list of payments based on the provided query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "Page size (items per page). Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Create a new payment",
+        "description": "Creates a new payment with the provided data and returns the created resource.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payments/{id}": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Get payment by ID",
+        "description": "Fetches a single payment that matches the specified identifier.",
         "parameters": [
           {
             "name": "id",
@@ -404,7 +494,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "Product"
         ],
@@ -513,17 +603,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/CreateStockMovementDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/CreateStockMovementDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/CreateStockMovementDto"
               }
             }
           }
@@ -559,7 +649,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "StockMovement"
         ],
@@ -580,17 +670,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/StockMovement"
+                "$ref": "#/components/schemas/UpdateStockMovementDto"
               }
             }
           }
@@ -668,17 +758,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/CreateSupplierDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/CreateSupplierDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/CreateSupplierDto"
               }
             }
           }
@@ -714,7 +804,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "Supplier"
         ],
@@ -735,17 +825,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/UpdateSupplierDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/UpdateSupplierDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Supplier"
+                "$ref": "#/components/schemas/UpdateSupplierDto"
               }
             }
           }
@@ -783,6 +873,135 @@
   },
   "components": {
     "schemas": {
+      "CreateOrderDto": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the customer related to the order.",
+            "nullable": true,
+            "example": "Maria da Silva"
+          },
+          "discount": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Discount applied to the order.",
+            "format": "double",
+            "example": 10,00
+          },
+          "taxes": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Taxes applied to the order.",
+            "format": "double",
+            "example": 5,50
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateOrderItemForOrderDto"
+            },
+            "description": "List of items that compose the order.",
+            "example": [
+              {
+                "productId": 1,
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new order."
+      },
+      "CreateOrderItemDto": {
+        "required": [
+          "orderId",
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order associated with this item.",
+            "format": "int32",
+            "example": 1
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with this item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Quantity of the product included in this order item.",
+            "format": "int32",
+            "example": 50
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new order item."
+      },
+      "CreateOrderItemForOrderDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with the order item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of the product in the order.",
+            "format": "int32",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create an item as part of a new order."
+      },
+      "CreatePaymentDto": {
+        "required": [
+          "method",
+          "orderId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order that will be paid.",
+            "format": "int32",
+            "example": 1
+          },
+          "method": {
+            "$ref": "#/components/schemas/PaymentMethod"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a payment for an existing order."
+      },
       "CreateProductDto": {
         "required": [
           "name"
@@ -824,214 +1043,295 @@
         "additionalProperties": false,
         "description": "Data transfer object used to create a new product."
       },
-      "Order": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "customerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/OrderStatus"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrderItem"
-            },
-            "nullable": true
-          },
-          "subtotal": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
-          },
-          "taxes": {
-            "type": "number",
-            "format": "double"
-          },
-          "discount": {
-            "type": "number",
-            "format": "double"
-          },
-          "total": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "orderId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "order": {
-            "$ref": "#/components/schemas/Order"
-          },
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPrice": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
+      "CreateStockMovementDto": {
+        "required": [
+          "productId",
+          "quantityChange",
+          "type"
         ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "Product": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "stockQuantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "supplierId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "supplier": {
-            "$ref": "#/components/schemas/Supplier"
-          },
-          "orderItems": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrderItem"
-            },
-            "nullable": true
-          },
-          "stockMovements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/StockMovement"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "StockMovement": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
-            "format": "int32"
-          },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
+            "description": "Identifier of the product affected by this stock movement.",
+            "format": "int32",
+            "example": 1
           },
           "quantityChange": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
-            "format": "int32"
+            "description": "Quantity of items that will change in stock",
+            "format": "int32",
+            "example": 10
           },
           "type": {
             "$ref": "#/components/schemas/StockMovementType"
           },
           "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
+            "description": "Optional identifier of the order related to this stock movement.",
             "format": "int32",
-            "nullable": true
+            "nullable": true,
+            "example": 3
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new stock movement."
+      },
+      "CreateSupplierDto": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the supplier.",
+            "example": "Fornecedor Esportivo LTDA"
+          },
+          "document": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Tax identification document of the supplier (CPF/CNPJ or equivalent).",
+            "nullable": true,
+            "example": "12.345.678/0001-99"
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact phone number of the supplier.",
+            "format": "tel",
+            "nullable": true,
+            "example": "(11) 98765-4321"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact email address of the supplier.",
+            "format": "email",
+            "nullable": true,
+            "example": "contato@fornecedor.com"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to create a new supplier."
+      },
+      "PaymentMethod": {
+        "enum": [
+          "CASH",
+          "CREDIT_CARD",
+          "DEBIT_CARD",
+          "PIX",
+          "OTHER"
+        ],
+        "type": "string"
       },
       "StockMovementType": {
         "enum": [
-          0,
-          1
+          "ENTRY",
+          "EXIT"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
-      "Supplier": {
+      "UpdateOrderDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
+          "customerName": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
-            "nullable": true
+            "description": "Name of the customer related to the order.",
+            "nullable": true,
+            "example": "Maria da Silva"
           },
-          "document": {
-            "type": "string",
-            "nullable": true
+          "discount": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Discount applied to the order.",
+            "format": "double",
+            "nullable": true,
+            "example": 10,00
           },
-          "phone": {
-            "type": "string",
-            "nullable": true
+          "taxes": {
+            "maximum": 1.7976931348623157E+308,
+            "minimum": 0,
+            "type": "number",
+            "description": "Taxes applied to the order.",
+            "format": "double",
+            "nullable": true,
+            "example": 5,50
           },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "products": {
+          "toAdd": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Product"
+              "$ref": "#/components/schemas/UpdateOrderItemToAddDto"
             },
-            "nullable": true
+            "description": "Items to be added to the order.",
+            "nullable": true,
+            "example": [
+              {
+                "productId": 1,
+                "quantity": 2
+              }
+            ]
+          },
+          "toRemove": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateOrderItemToRemoveDto"
+            },
+            "description": "Items to be removed from the order.",
+            "nullable": true,
+            "example": [
+              {
+                "orderItemId": 10
+              }
+            ]
+          },
+          "toEdit": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateOrderItemToEditDto"
+            },
+            "description": "Items to be edited in the order.",
+            "nullable": true,
+            "example": [
+              {
+                "orderItemId": 10,
+                "productId": 2,
+                "quantity": 3
+              }
+            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Data transfer object used to update an existing order."
+      },
+      "UpdateOrderItemDto": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order associated with this item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with this item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Quantity of the product included in this order item.",
+            "format": "int32",
+            "nullable": true,
+            "example": 60
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to update an existing order item."
+      },
+      "UpdateOrderItemToAddDto": {
+        "required": [
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product associated with the order item.",
+            "format": "int32",
+            "example": 1
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of the product in the order.",
+            "format": "int32",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be added to the order."
+      },
+      "UpdateOrderItemToEditDto": {
+        "required": [
+          "orderItemId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderItemId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order item to be edited.",
+            "format": "int32",
+            "example": 10
+          },
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "New product identifier for the order item (optional).",
+            "format": "int32",
+            "nullable": true,
+            "example": 2
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "New quantity for the order item (optional).",
+            "format": "int32",
+            "nullable": true,
+            "example": 3
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be edited in the order."
+      },
+      "UpdateOrderItemToRemoveDto": {
+        "required": [
+          "orderItemId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderItemId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the order item to be removed.",
+            "format": "int32",
+            "example": 10
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an item to be removed from the order."
       },
       "UpdateProductDto": {
         "type": "object",
@@ -1065,6 +1365,84 @@
         },
         "additionalProperties": false,
         "description": "Data transfer object used to partially update an existing product.\r\nAll properties are optional; only provided values will be updated."
+      },
+      "UpdateStockMovementDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Identifier of the product affected by this stock movement.",
+            "format": "int32",
+            "nullable": true,
+            "example": 2
+          },
+          "quantityChange": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Quantity of items that will change in stock",
+            "format": "int32",
+            "nullable": true,
+            "example": 15
+          },
+          "type": {
+            "$ref": "#/components/schemas/StockMovementType"
+          },
+          "orderId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Optional identifier of the order related to this stock movement.",
+            "format": "int32",
+            "nullable": true,
+            "example": 5
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to partially update an existing stock movement.\r\nAll properties are optional; only provided values will be updated."
+      },
+      "UpdateSupplierDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the supplier.",
+            "nullable": true,
+            "example": "Fornecedor Atualizado ME"
+          },
+          "document": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Tax identification document of the supplier (CPF/CNPJ or equivalent).",
+            "nullable": true,
+            "example": "98.765.432/0001-55"
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact phone number of the supplier.",
+            "format": "tel",
+            "nullable": true,
+            "example": "(21) 91234-5678"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Contact email address of the supplier.",
+            "format": "email",
+            "nullable": true,
+            "example": "financeiro@fornecedoratualizado.com"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object used to partially update an existing supplier.\r\nAll properties are optional; only provided values will be updated."
       }
     }
   },
@@ -1074,6 +1452,9 @@
     },
     {
       "name": "OrderItem"
+    },
+    {
+      "name": "Payment"
     },
     {
       "name": "Product"

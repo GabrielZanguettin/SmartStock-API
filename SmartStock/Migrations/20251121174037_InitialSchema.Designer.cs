@@ -12,8 +12,8 @@ using SmartStock.Data;
 namespace SmartStock.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251118022551_init")]
-    partial class init
+    [Migration("20251121174037_InitialSchema")]
+    partial class InitialSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,6 +88,34 @@ namespace SmartStock.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("SmartStock.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Method")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("SmartStock.Entities.Product", b =>
@@ -195,6 +223,17 @@ namespace SmartStock.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("SmartStock.Entities.Payment", b =>
+                {
+                    b.HasOne("SmartStock.Entities.Order", "Order")
+                        .WithOne("Payment")
+                        .HasForeignKey("SmartStock.Entities.Payment", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("SmartStock.Entities.Product", b =>
                 {
                     b.HasOne("SmartStock.Entities.Supplier", "Supplier")
@@ -220,6 +259,8 @@ namespace SmartStock.Migrations
             modelBuilder.Entity("SmartStock.Entities.Order", b =>
                 {
                     b.Navigation("Items");
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("SmartStock.Entities.Product", b =>

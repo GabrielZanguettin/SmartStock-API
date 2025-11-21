@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartStock.Data;
-using SmartStock.Dtos;
-using SmartStock.Entities;
-using SmartStock.Enums;
 using SmartStock.Responses;
+using SmartStock.Entities;
+using SmartStock.Dtos;
 
 namespace SmartStock.Services
 {
@@ -63,8 +62,6 @@ namespace SmartStock.Services
                 CustomerName = dto.CustomerName,
                 Discount = dto.Discount,
                 Taxes = dto.Taxes,
-                Status = OrderStatus.DRAFT,
-                CreatedAt = DateTime.UtcNow,
             };
 
             foreach (var itemDto in dto.Items)
@@ -91,14 +88,14 @@ namespace SmartStock.Services
             };
         }
 
-        public async Task<ApiResponse<Order>> UpdateOrder(int orderId, UpdateOrderDto dto)
+        public async Task<ApiResponse<Order>> UpdateOrder(int id, UpdateOrderDto dto)
         {
             if (dto is null)
                 throw new ArgumentNullException(nameof(dto), "Payload não pode ser nulo.");
 
             var order = await _context.Orders
                 .Include(o => o.Items)
-                .FirstOrDefaultAsync(o => o.Id == orderId)
+                .FirstOrDefaultAsync(o => o.Id == id)
                 ?? throw new InvalidOperationException("Pedido não encontrado.");
 
             if (dto.CustomerName is not null)

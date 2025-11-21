@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|c:\\users\\gabri\\desktop\\programa\u00E7\u00E3o\\smartstock-api\\smartstock\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|solutionrelative:smartstock\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|c:\\users\\gabri\\desktop\\programa\u00E7\u00E3o\\smartstock-api\\smartstock\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|solutionrelative:smartstock\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|c:\\users\\gabri\\desktop\\programa\u00E7\u00E3o\\smartstock-api\\smartstock\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36E5EB35-7F37-42CF-8366-0AB61C674674}|SmartStock\\SmartStock.csproj|solutionrelative:smartstock\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "SmartStock\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "SmartStock\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wAkAAAAzAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Program.cs",
+              "RelativeDocumentMoniker": "SmartStock\\Program.cs",
+              "ToolTip": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Program.cs",
+              "RelativeToolTip": "SmartStock\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T21:06:58.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "SmartStock\\Services\\ProductService.cs",
-              "ToolTip": "C:\\Users\\gabri\\Desktop\\Programa\u00E7\u00E3o\\SmartStock-API\\SmartStock\\Services\\ProductService.cs",
-              "RelativeToolTip": "SmartStock\\Services\\ProductService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T18:48:35.791Z",
+              "WhenOpened": "2025-11-21T19:20:25.618Z",
               "EditorCaption": ""
             }
           ]
